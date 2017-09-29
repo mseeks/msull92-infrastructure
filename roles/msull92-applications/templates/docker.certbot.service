@@ -1,0 +1,17 @@
+[Unit]
+Description=Certbot
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill pierreprinetti/certbot
+ExecStartPre=-/usr/bin/docker rm pierreprinetti/certbot
+ExecStartPre=/usr/bin/docker pull pierreprinetti/certbot
+ExecStartPre=/usr/bin/systemctl stop docker.applications-router.service
+ExecStart=/usr/bin/docker run -v /data/certbot:/etc/letsencrypt --env-file /srv/certbot/.env -p 80:80 -p 443:443 pierreprinetti/certbot
+ExecStartPost=/usr/bin/systemctl start docker.applications-router.service
+
+[Install]
+WantedBy=multi-user.target

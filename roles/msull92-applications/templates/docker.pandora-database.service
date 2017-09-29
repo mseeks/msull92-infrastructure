@@ -1,0 +1,15 @@
+[Unit]
+Description=Pandora Database
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill pandora_database
+ExecStartPre=-/usr/bin/docker rm pandora_database
+ExecStartPre=/usr/bin/docker pull postgres
+ExecStart=/usr/bin/docker run --env-file /srv/pandora-database/.env -v /data/pandora-database:/var/lib/postgresql/data --name pandora_database postgres
+
+[Install]
+WantedBy=multi-user.target

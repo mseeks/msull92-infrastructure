@@ -1,0 +1,15 @@
+[Unit]
+Description=Mood Presenter
+After=docker.mood-database.service
+Requires=docker.mood-database.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill mood_presenter
+ExecStartPre=-/usr/bin/docker rm mood_presenter
+ExecStartPre=/usr/bin/docker pull msull92/mood-presenter
+ExecStart=/usr/bin/docker run --env-file /srv/mood-presenter/.env --link mood_database:postgres --name mood_presenter msull92/mood-presenter
+
+[Install]
+WantedBy=multi-user.target

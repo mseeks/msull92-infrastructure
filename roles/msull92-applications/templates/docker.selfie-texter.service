@@ -1,0 +1,14 @@
+[Unit]
+Description=Selfie Texter
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill msull92/selfie-texter
+ExecStartPre=-/usr/bin/docker rm msull92/selfie-texter
+ExecStartPre=/usr/bin/docker pull msull92/selfie-texter
+ExecStart=/usr/bin/docker run --env-file /srv/selfie-texter/.env msull92/selfie-texter
+
+[Install]
+WantedBy=multi-user.target

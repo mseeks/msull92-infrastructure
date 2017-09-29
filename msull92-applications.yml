@@ -1,0 +1,12 @@
+- name: Bootstrap ansible
+  hosts: msull92-applications
+  gather_facts: false
+  roles:
+    - defunctzombie.coreos-bootstrap
+
+- hosts: msull92-applications
+  become: true
+  vars_files:
+    - vars/msull92-applications/main.yml
+  roles:
+    - role: msull92-applications

@@ -1,0 +1,23 @@
+long_running_services:
+  - docker.applications-router.service
+  - docker.mood-database.service
+  - docker.mood-presenter.service
+  - docker.mood-receiver.service
+  - docker.msull92-com.service
+  - docker.pandora-database.service
+  - docker.pandora-database-presenter.service
+  - docker.selfie-receiver.service
+timed_services:
+  - docker.certbot.service
+  - docker.mood-matrix-generator.service
+  - docker.pandora-database-loader.service
+  - docker.portfolio-manager.service
+  - docker.rss-to-instapaper-loader.service
+  - docker.selfie-texter.service
+timers:
+  - docker.certbot.timer
+  - docker.mood-matrix-generator.timer
+  - docker.pandora-database-loader.timer
+  - docker.portfolio-manager.timer
+  - docker.rss-to-instapaper-loader.timer
+  - docker.selfie-texter.timer

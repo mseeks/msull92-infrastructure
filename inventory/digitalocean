@@ -1,0 +1,6 @@
+[msull92-applications]
+msull92.com
+
+[msull92-applications:vars]
+ansible_ssh_user=core
+ansible_python_interpreter=/home/core/bin/python

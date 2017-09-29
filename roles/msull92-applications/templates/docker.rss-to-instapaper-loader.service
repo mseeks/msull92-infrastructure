@@ -1,0 +1,14 @@
+[Unit]
+Description=RSS to Instapaper Loader
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill msull92/rss-to-instapaper-loader
+ExecStartPre=-/usr/bin/docker rm msull92/rss-to-instapaper-loader
+ExecStartPre=/usr/bin/docker pull msull92/rss-to-instapaper-loader
+ExecStart=/usr/bin/docker run --env-file /srv/rss-to-instapaper-loader/.env -v /data/rss-to-instapaper-loader:/app/data msull92/rss-to-instapaper-loader
+
+[Install]
+WantedBy=multi-user.target

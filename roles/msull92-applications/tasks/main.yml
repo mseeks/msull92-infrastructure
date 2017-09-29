@@ -1,0 +1,19 @@
+- name: Place the systemd files
+  template:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/{{ item }}
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
+
+- name: Enable systemd services and timers
+  command: systemctl enable {{ item }}
+  with_items: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
+
+- name: Reload systemd
+  command: systemctl daemon-reload
+
+- name: Restart long running services and timers
+  command: systemctl restart {{ item }}
+  with_items: "{{ long_running_services }} + {{ timers }}"

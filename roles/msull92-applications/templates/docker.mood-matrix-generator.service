@@ -1,0 +1,14 @@
+[Unit]
+Description=Mood Matrix Generator
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill msull92/mood-matrix-generator
+ExecStartPre=-/usr/bin/docker rm msull92/mood-matrix-generator
+ExecStartPre=/usr/bin/docker pull msull92/mood-matrix-generator
+ExecStart=/usr/bin/docker run --env-file /srv/mood-matrix-generator/.env -v /data/mood-matrix-generator:/app/data msull92/mood-matrix-generator
+
+[Install]
+WantedBy=multi-user.target

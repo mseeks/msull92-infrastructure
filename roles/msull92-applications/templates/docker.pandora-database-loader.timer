@@ -1,0 +1,8 @@
+[Unit]
+Description=Starts the Pandora Database Loader service every day
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+
+[Install]
+WantedBy=multi-user.target

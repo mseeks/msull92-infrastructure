@@ -1,0 +1,14 @@
+[Unit]
+Description=Pandora Database Loader
+After=docker.pandora-database.service
+Requires=docker.pandora-database.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill msull92/pandora-database-loader
+ExecStartPre=-/usr/bin/docker rm msull92/pandora-database-loader
+ExecStartPre=/usr/bin/docker pull msull92/pandora-database-loader
+ExecStart=/usr/bin/docker run --env-file /srv/pandora-database-loader/.env --link pandora_database:postgres msull92/pandora-database-loader
+
+[Install]
+WantedBy=multi-user.target

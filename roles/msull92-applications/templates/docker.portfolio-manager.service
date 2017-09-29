@@ -1,0 +1,14 @@
+[Unit]
+Description=Portfolio Manager
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill msull92/portfolio-manager
+ExecStartPre=-/usr/bin/docker rm msull92/portfolio-manager
+ExecStartPre=/usr/bin/docker pull msull92/portfolio-manager
+ExecStart=/usr/bin/docker run --env-file /srv/portfolio-manager/.env msull92/portfolio-manager
+
+[Install]
+WantedBy=multi-user.target
