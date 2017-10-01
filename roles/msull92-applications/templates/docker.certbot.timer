@@ -1,8 +1,8 @@
 [Unit]
-Description=Starts the Certbot service once a month
+Description=Starts the Certbot service once a day
 
 [Timer]
-OnCalendar=*-*-1 00:00:00
+OnCalendar=*-*-* 00:00:00
 
 [Install]
 WantedBy=multi-user.target

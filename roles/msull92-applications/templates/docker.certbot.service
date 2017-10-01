@@ -4,6 +4,8 @@ After=docker.service
 Requires=docker.service
 
 [Service]
+User=root
+Group=root
 Type=oneshot
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill pierreprinetti/certbot
