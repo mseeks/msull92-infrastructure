@@ -4,6 +4,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
+Type=oneshot
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill msull92/selfie-texter
 ExecStartPre=-/usr/bin/docker rm msull92/selfie-texter

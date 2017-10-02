@@ -4,6 +4,7 @@ After=docker.pandora-database.service
 Requires=docker.pandora-database.service
 
 [Service]
+Type=oneshot
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill msull92/pandora-database-loader
 ExecStartPre=-/usr/bin/docker rm msull92/pandora-database-loader
