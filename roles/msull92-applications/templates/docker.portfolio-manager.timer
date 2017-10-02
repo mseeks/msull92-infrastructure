@@ -2,7 +2,7 @@
 Description=Starts the Portfolio Manager 30min before and after market open
 
 [Timer]
-OnCalendar=Mon..Fri *-*-* 8,9:00:00 CT
+OnCalendar=Mon..Fri *-*-* 12,13,14:00:00
 
 [Install]
 WantedBy=multi-user.target
