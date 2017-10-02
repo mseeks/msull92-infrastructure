@@ -1,8 +1,8 @@
 [Unit]
-Description=Starts the Portfolio Manager service every day
+Description=Starts the Portfolio Manager 30min before and after market open
 
 [Timer]
-OnCalendar=*-*-* 05:00:00
+OnCalendar=*-*-* 14,15:00:00
 
 [Install]
 WantedBy=multi-user.target

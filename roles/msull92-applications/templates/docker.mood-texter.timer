@@ -1,0 +1,8 @@
+[Unit]
+Description=Starts the Mood Texter service at specific times
+
+[Timer]
+OnCalendar=*-*-* 00,01,02,03,14,15,16,17,18,19,20,21,22:00:00
+
+[Install]
+WantedBy=multi-user.target
