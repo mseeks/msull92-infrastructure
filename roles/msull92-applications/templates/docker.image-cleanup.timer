@@ -1,8 +1,0 @@
-[Unit]
-Description=Starts the Docker Image Cleanup service once a day
-
-[Timer]
-OnCalendar=*-*-* 00:00:00
-
-[Install]
-WantedBy=multi-user.target

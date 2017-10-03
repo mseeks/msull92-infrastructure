@@ -9,7 +9,6 @@ long_running_services:
   - docker.selfie-receiver.service
 timed_services:
   - docker.certbot.service
-  - docker.image-cleanup.service
   - docker.mood-matrix-generator.service
   - docker.mood-texter.service
   - docker.pandora-database-loader.service
@@ -18,7 +17,6 @@ timed_services:
   - docker.selfie-texter.service
 timers:
   - docker.certbot.timer
-  - docker.image-cleanup.timer
   - docker.mood-matrix-generator.timer
   - docker.mood-texter.timer
   - docker.pandora-database-loader.timer
