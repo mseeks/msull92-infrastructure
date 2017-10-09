@@ -1,8 +1,8 @@
 [Unit]
-Description=Starts the Portfolio Manager every fifteen minutes on trading days
+Description=Starts the Portfolio Manager every fifteen minutes
 
 [Timer]
-OnCalendar=Mon..Fri *-*-* *:0/15
+OnCalendar=*-*-* *:0/15
 
 [Install]
 WantedBy=multi-user.target
