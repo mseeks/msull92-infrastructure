@@ -18,7 +18,6 @@ timed_services:
 timers:
   - docker.certbot.timer
   - docker.mood-matrix-generator.timer
-  - docker.mood-texter.timer
   - docker.pandora-database-loader.timer
   - docker.portfolio-manager.timer
   - docker.rss-to-instapaper-loader.timer
