@@ -8,13 +8,11 @@ long_running_services:
   - docker.selfie-receiver.service
 timed_services:
   - docker.certbot.service
-  - docker.pandora-database-loader.service
   - docker.portfolio-manager.service
   - docker.rss-to-instapaper-loader.service
   - docker.selfie-texter.service
 timers:
   - docker.certbot.timer
-  - docker.pandora-database-loader.timer
   - docker.portfolio-manager.timer
   - docker.rss-to-instapaper-loader.timer
   - docker.selfie-texter.timer
