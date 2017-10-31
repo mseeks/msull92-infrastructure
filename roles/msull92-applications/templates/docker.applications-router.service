@@ -1,7 +1,7 @@
 [Unit]
 Description=Applications Router
-After=docker.pandora-database-presenter.service docker.msull92-com.service docker.selfie-receiver.service docker.mood-presenter.service
-Requires=docker.pandora-database-presenter.service docker.msull92-com.service docker.selfie-receiver.service docker.mood-presenter.service
+After=docker.pandora-database-presenter.service docker.msull92-com.service docker.selfie-receiver.service docker.mood-presenter.service docker.portfolio-presenter.service
+Requires=docker.pandora-database-presenter.service docker.msull92-com.service docker.selfie-receiver.service docker.mood-presenter.service docker.portfolio-presenter.service
 
 [Service]
 TimeoutStartSec=0
@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill msull92/applications-router
 ExecStartPre=-/usr/bin/docker rm msull92/applications-router
 ExecStartPre=/usr/bin/docker pull msull92/applications-router
-ExecStart=/usr/bin/docker run --link mood_presenter --link pandora_database_presenter --link selfie_receiver --link msull92_com --env-file /srv/applications-router/.env -v /data:/data:ro -v /data/certbot:/etc/nginx/certs:ro -p 80:80 -p 443:443 msull92/applications-router
+ExecStart=/usr/bin/docker run --link mood_presenter --link pandora_database_presenter --link portfolio_presenter --link selfie_receiver --link msull92_com --env-file /srv/applications-router/.env -v /data:/data:ro -v /data/certbot:/etc/nginx/certs:ro -p 80:80 -p 443:443 msull92/applications-router
 
 [Install]
 WantedBy=multi-user.target
