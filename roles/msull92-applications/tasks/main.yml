@@ -6,6 +6,11 @@
   set_fact:
     all_services_and_timers: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
 
+- name: Create networks
+  docker_network:
+    name: "{{ item }}"
+  with_items: "{{ networks }}"
+
 - name: Place the systemd files
   template:
     src: "{{ item }}"

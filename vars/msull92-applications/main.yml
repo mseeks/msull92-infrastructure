@@ -13,6 +13,12 @@ long_running_services:
   - docker.portfolio-presenter.service
   - docker.selfie-receiver.service
   - docker.zookeeper.service
+networks:
+  - applications_router
+  - equity_signaler
+  - kafka
+  - mood
+  - pandora
 timed_services:
   - docker.certbot.service
   - docker.equity-signaler.service
