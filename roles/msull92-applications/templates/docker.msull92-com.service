@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill msull92_com
 ExecStartPre=-/usr/bin/docker rm msull92_com
 ExecStartPre=/usr/bin/docker pull msull92/msull92-com
-ExecStart=/usr/bin/docker run --name msull92_com msull92/msull92-com
+ExecStart=/usr/bin/docker run --network applications_router --name msull92_com msull92/msull92-com
 
 [Install]
 WantedBy=multi-user.target

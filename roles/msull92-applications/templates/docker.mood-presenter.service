@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill mood_presenter
 ExecStartPre=-/usr/bin/docker rm mood_presenter
 ExecStartPre=/usr/bin/docker pull msull92/mood-presenter
-ExecStart=/usr/bin/docker run --env-file /srv/mood-presenter/.env --link mood_database:postgres --name mood_presenter msull92/mood-presenter
+ExecStart=/usr/bin/docker run --network applications_router --env-file /srv/mood-presenter/.env --network mood --name mood_presenter msull92/mood-presenter
 
 [Install]
 WantedBy=multi-user.target

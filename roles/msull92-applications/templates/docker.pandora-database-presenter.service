@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill pandora_database_presenter
 ExecStartPre=-/usr/bin/docker rm pandora_database_presenter
 ExecStartPre=/usr/bin/docker pull msull92/pandora-database-presenter
-ExecStart=/usr/bin/docker run --env-file /srv/pandora-database-presenter/.env --link pandora_database:postgres --name pandora_database_presenter msull92/pandora-database-presenter
+ExecStart=/usr/bin/docker run --env-file /srv/pandora-database-presenter/.env --network applications_router --network pandora --name pandora_database_presenter msull92/pandora-database-presenter
 
 [Install]
 WantedBy=multi-user.target
