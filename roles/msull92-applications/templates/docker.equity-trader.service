@@ -1,7 +1,7 @@
 [Unit]
 Description=Equity Trader
-After=docker.service
-Requires=docker.service
+After=docker.kafka.service docker.service
+Requires=docker.kafka.service docker.service
 
 [Service]
 Type=oneshot

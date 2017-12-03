@@ -1,7 +1,7 @@
 [Unit]
 Description=Equity Signaler
-After=docker.service
-Requires=docker.service
+After=docker.equity-signaler-database.service docker.kafka.service docker.service
+Requires=docker.equity-signaler-database.service docker.kafka.service docker.service
 
 [Service]
 Type=oneshot
