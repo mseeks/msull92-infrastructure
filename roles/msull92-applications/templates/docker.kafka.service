@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill kafka
 ExecStartPre=-/usr/bin/docker rm kafka
 ExecStartPre=/usr/bin/docker pull spotify/kafka
-ExecStart=/usr/bin/docker run --env-file /srv/kafka/.env -p 2181 -p 9092 --name kafka spotify/kafka
+ExecStart=/usr/bin/docker run --env-file /srv/kafka/.env --name kafka spotify/kafka
 
 [Install]
 WantedBy=multi-user.target
