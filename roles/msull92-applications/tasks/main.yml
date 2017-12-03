@@ -1,3 +1,11 @@
+- name: Set long_running_services_and_timers fact
+  set_fact:
+    long_running_services_and_timers: "{{ long_running_services }} + {{ timers }}"
+
+- name: Set all_services_and_timers fact
+  set_fact:
+    all_services_and_timers: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
+
 - name: Place the systemd files
   template:
     src: "{{ item }}"
@@ -5,15 +13,15 @@
     owner: root
     group: root
     mode: 0644
-  with_items: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
+  with_items: "{{ all_services_and_timers }}"
 
 - name: Enable systemd services and timers
   command: systemctl enable {{ item }}
-  with_items: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
+  with_items: "{{ all_services_and_timers }}"
 
 - name: Reload systemd
   command: systemctl daemon-reload
 
 - name: Restart long running services and timers
   command: systemctl restart {{ item }}
-  with_items: "{{ long_running_services }} + {{ timers }}"
+  with_items: "{{ long_running_services_and_timers }}"
