@@ -2,6 +2,7 @@ long_running_services:
   - docker.applications-router.service
   - docker.datadog-agent.service
   - docker.equity-signaler-database.service
+  - docker.equity-trader.service
   - docker.kafka.service
   - docker.mood-database.service
   - docker.mood-presenter.service
@@ -14,12 +15,10 @@ long_running_services:
 timed_services:
   - docker.certbot.service
   - docker.equity-signaler.service
-  - docker.portfolio-manager.service
   - docker.rss-to-instapaper-loader.service
   - docker.selfie-texter.service
 timers:
   - docker.certbot.timer
   - docker.equity-signaler.timer
-  - docker.portfolio-manager.timer
   - docker.rss-to-instapaper-loader.timer
   - docker.selfie-texter.timer

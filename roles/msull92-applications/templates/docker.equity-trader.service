@@ -1,0 +1,15 @@
+[Unit]
+Description=Equity Trader
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill equity_trader
+ExecStartPre=-/usr/bin/docker rm equity_trader
+ExecStartPre=/usr/bin/docker pull msull92/equity-trader
+ExecStart=/usr/bin/docker run --env-file /srv/equity-trader/.env --name equity_trader --link kafka msull92/equity-trader
+
+[Install]
+WantedBy=multi-user.target

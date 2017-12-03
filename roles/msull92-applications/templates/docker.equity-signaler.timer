@@ -1,5 +1,5 @@
 [Unit]
-Description=Starts the Equity Trader service on a regular interval
+Description=Starts the Equity Signaler service on a regular interval
 
 [Timer]
 OnCalendar=*-*-* *:0/5
