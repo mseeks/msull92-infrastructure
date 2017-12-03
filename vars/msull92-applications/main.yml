@@ -1,6 +1,7 @@
 long_running_services:
   - docker.applications-router.service
   - docker.datadog-agent.service
+  - docker.kafka.service
   - docker.mood-database.service
   - docker.mood-presenter.service
   - docker.msull92-com.service
