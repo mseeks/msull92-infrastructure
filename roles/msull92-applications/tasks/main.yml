@@ -7,9 +7,9 @@
     all_services_and_timers: "{{ long_running_services }} + {{ timed_services }} + {{ timers }}"
 
 - name: Create networks
-  docker_network:
-    name: "{{ item }}"
+  command: docker network create {{ item }}
   with_items: "{{ networks }}"
+  failed_when: false
 
 - name: Place the systemd files
   template:
