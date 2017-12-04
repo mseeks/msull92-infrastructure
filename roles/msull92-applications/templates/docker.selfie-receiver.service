@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill selfie_receiver
 ExecStartPre=-/usr/bin/docker rm selfie_receiver
 ExecStartPre=/usr/bin/docker pull msull92/selfie-receiver
-ExecStart=/usr/bin/docker run --network applications_router --env-file /srv/selfie-receiver/.env --name selfie_receiver -v /data/selfie-receiver:/data msull92/selfie-receiver
+ExecStart=/usr/bin/docker run --network internal --env-file /srv/selfie-receiver/.env --name selfie_receiver -v /data/selfie-receiver:/data msull92/selfie-receiver
 
 [Install]
 WantedBy=multi-user.target

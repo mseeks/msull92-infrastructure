@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill kafka
 ExecStartPre=-/usr/bin/docker rm kafka
 ExecStartPre=/usr/bin/docker pull ches/kafka
-ExecStart=/usr/bin/docker run --network kafka --env ZOOKEEPER_IP=zookeeper --name kafka ches/kafka
+ExecStart=/usr/bin/docker run --network internal --env ZOOKEEPER_IP=zookeeper --name kafka ches/kafka
 
 [Install]
 WantedBy=multi-user.target

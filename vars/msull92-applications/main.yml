@@ -14,11 +14,7 @@ long_running_services:
   - docker.selfie-receiver.service
   - docker.zookeeper.service
 networks:
-  - applications_router
-  - equity_signaler
-  - kafka
-  - mood
-  - pandora
+  - internal
 timed_services:
   - docker.certbot.service
   - docker.equity-signaler.service

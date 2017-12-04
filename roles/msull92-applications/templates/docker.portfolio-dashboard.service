@@ -7,7 +7,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill portfolio_dashboard
 ExecStartPre=-/usr/bin/docker rm portfolio_dashboard
 ExecStartPre=/usr/bin/docker pull msull92/portfolio-dashboard
-ExecStart=/usr/bin/docker run --network applications_router --name portfolio_dashboard msull92/portfolio-dashboard
+ExecStart=/usr/bin/docker run --network internal --name portfolio_dashboard msull92/portfolio-dashboard
 
 [Install]
 WantedBy=multi-user.target
