@@ -1,0 +1,15 @@
+[Unit]
+Description=Portfolio Emitter
+After=docker.kafka.service docker.service
+Requires=docker.kafka.service docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill portfolio_emitter
+ExecStartPre=-/usr/bin/docker rm portfolio_emitter
+ExecStartPre=/usr/bin/docker pull msull92/portfolio-emitter
+ExecStart=/usr/bin/docker run --network internal --env-file /srv/portfolio-emitter/.env --name portfolio_emitter msull92/portfolio-emitter
+
+[Install]
+WantedBy=multi-user.target

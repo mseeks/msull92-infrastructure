@@ -10,6 +10,7 @@ long_running_services:
   - docker.pandora-database.service
   - docker.pandora-database-presenter.service
   - docker.portfolio-dashboard.service
+  - docker.portfolio-emitter.service
   - docker.portfolio-presenter.service
   - docker.selfie-receiver.service
   - docker.zookeeper.service
@@ -18,10 +19,12 @@ networks:
 timed_services:
   - docker.certbot.service
   - docker.equity-signaler.service
+  - docker.portfolio-tracker.service
   - docker.rss-to-instapaper-loader.service
   - docker.selfie-texter.service
 timers:
   - docker.certbot.timer
   - docker.equity-signaler.timer
+  - docker.portfolio-tracker.timer
   - docker.rss-to-instapaper-loader.timer
   - docker.selfie-texter.timer
