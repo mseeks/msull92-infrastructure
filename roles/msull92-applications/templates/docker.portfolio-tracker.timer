@@ -1,0 +1,8 @@
+[Unit]
+Description=Starts the Portfolio Tracker service on a regular interval
+
+[Timer]
+OnCalendar=*:*:0/10
+
+[Install]
+WantedBy=multi-user.target
