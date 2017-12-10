@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill applications_router
 ExecStartPre=-/usr/bin/docker rm applications_router
 ExecStartPre=/usr/bin/docker pull msull92/applications-router
-ExecStart=/usr/bin/docker run -m 25m --network internal --env-file /srv/applications-router/.env -v /data:/data:ro -v /data/certbot:/etc/nginx/certs:ro -p 80:80 -p 443:443 --name applications_router msull92/applications-router
+ExecStart=/usr/bin/docker run -m 25m --cpus=".25" --network internal --env-file /srv/applications-router/.env -v /data:/data:ro -v /data/certbot:/etc/nginx/certs:ro -p 80:80 -p 443:443 --name applications_router msull92/applications-router
 
 [Install]
 WantedBy=multi-user.target

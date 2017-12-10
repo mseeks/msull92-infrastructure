@@ -7,7 +7,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill datadog_agent
 ExecStartPre=-/usr/bin/docker rm datadog_agent
 ExecStartPre=/usr/bin/docker pull datadog/docker-dd-agent
-ExecStart=/usr/bin/docker run -d --name datadog_agent -m 250m -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro --env-file /srv/datadog/.env -e SD_BACKEND=docker datadog/docker-dd-agent
+ExecStart=/usr/bin/docker run -d --name datadog_agent -m 250m --cpus=".25" -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro --env-file /srv/datadog/.env -e SD_BACKEND=docker datadog/docker-dd-agent
 
 [Install]
 WantedBy=multi-user.target

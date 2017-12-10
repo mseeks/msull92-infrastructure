@@ -9,7 +9,7 @@ TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill portfolio_tracker
 ExecStartPre=-/usr/bin/docker rm portfolio_tracker
 ExecStartPre=/usr/bin/docker pull msull92/portfolio-tracker
-ExecStart=/usr/bin/docker run -m 25m --env-file /srv/portfolio-tracker/.env --network internal --name portfolio_tracker msull92/portfolio-tracker
+ExecStart=/usr/bin/docker run -m 25m --cpus=".1" --env-file /srv/portfolio-tracker/.env --network internal --name portfolio_tracker msull92/portfolio-tracker
 
 [Install]
 WantedBy=multi-user.target
