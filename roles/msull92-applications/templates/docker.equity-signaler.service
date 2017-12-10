@@ -9,7 +9,7 @@ TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill equity_signaler
 ExecStartPre=-/usr/bin/docker rm equity_signaler
 ExecStartPre=/usr/bin/docker pull msull92/equity-signaler
-ExecStart=/usr/bin/docker run --env-file /srv/equity-signaler/.env --network internal --name equity_signaler msull92/equity-signaler
+ExecStart=/usr/bin/docker run -m 25m --env-file /srv/equity-signaler/.env --network internal --name equity_signaler msull92/equity-signaler
 
 [Install]
 WantedBy=multi-user.target
