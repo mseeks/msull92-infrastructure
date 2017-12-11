@@ -12,7 +12,7 @@ ExecStartPre=-/usr/bin/docker kill certbot
 ExecStartPre=-/usr/bin/docker rm certbot
 ExecStartPre=/usr/bin/docker pull certbot/certbot
 ExecStartPre=/usr/bin/systemctl stop docker.applications-router.service
-ExecStart=/usr/bin/docker run -m 25m --cpus=".1" -v /data/certbot:/etc/letsencrypt --env-file /srv/certbot/.env -p 80:80 -p 443:443 --name certbot certbot/certbot renew
+ExecStart=/usr/bin/docker run -m 100m --cpus=".25" -v /data/certbot:/etc/letsencrypt --env-file /srv/certbot/.env -p 80:80 -p 443:443 --name certbot certbot/certbot renew
 ExecStartPost=/usr/bin/systemctl start docker.applications-router.service
 
 [Install]
