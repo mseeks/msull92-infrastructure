@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill zookeeper
 ExecStartPre=-/usr/bin/docker rm zookeeper
 ExecStartPre=/usr/bin/docker pull zookeeper:3.4
-ExecStart=/usr/bin/docker run -m 50m --cpus=".1" --name zookeeper --network internal zookeeper:3.4
+ExecStart=/usr/bin/docker run -m 100m --cpus=".25" --name zookeeper --network internal zookeeper:3.4
 
 [Install]
 WantedBy=multi-user.target
