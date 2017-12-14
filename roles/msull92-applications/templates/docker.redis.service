@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill redis
 ExecStartPre=-/usr/bin/docker rm redis
 ExecStartPre=/usr/bin/docker pull redis
-ExecStart=/usr/bin/docker run -v /data/redis:/data --name redis --network internal -m 100m --cpus=".25" redis redis-server --appendonly yes
+ExecStart=/usr/bin/docker run --name redis --network internal -m 100m --cpus=".25" redis
 
 [Install]
 WantedBy=multi-user.target
