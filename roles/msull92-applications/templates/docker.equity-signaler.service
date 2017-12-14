@@ -1,11 +1,11 @@
 [Unit]
 Description=Equity Signaler
-After=docker.equity-signaler-database.service docker.kafka.service docker.service
-Requires=docker.equity-signaler-database.service docker.kafka.service docker.service
+After=docker.redis.service docker.kafka.service
+Requires=docker.redis.service docker.kafka.service
 
 [Service]
-Type=oneshot
 TimeoutStartSec=0
+Restart=always
 ExecStartPre=-/usr/bin/docker kill equity_signaler
 ExecStartPre=-/usr/bin/docker rm equity_signaler
 ExecStartPre=/usr/bin/docker pull msull92/equity-signaler
