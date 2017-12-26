@@ -4,6 +4,7 @@ long_running_services:
   - docker.equity-signaler.service
   - docker.equity-trader.service
   - docker.kafka.service
+  - docker.macd-tracker.service
   - docker.mood-database.service
   - docker.mood-presenter.service
   - docker.msull92-com.service
