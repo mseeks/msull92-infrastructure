@@ -21,8 +21,6 @@ networks:
 timed_services:
   - docker.certbot.service
   - docker.portfolio-tracker.service
-  - docker.selfie-texter.service
 timers:
   - docker.certbot.timer
   - docker.portfolio-tracker.timer
-  - docker.selfie-texter.timer
