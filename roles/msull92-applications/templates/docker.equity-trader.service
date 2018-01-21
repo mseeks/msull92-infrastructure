@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill equity_trader
 ExecStartPre=-/usr/bin/docker rm equity_trader
 ExecStartPre=/usr/bin/docker pull msull92/equity-trader
-ExecStart=/usr/bin/docker run -m 1500m --cpus=".5" --network internal --env-file /srv/equity-trader/.env --name equity_trader msull92/equity-trader
+ExecStart=/usr/bin/docker run -m 100m --cpus=".5" --network internal --env-file /srv/equity-trader/.env --name equity_trader msull92/equity-trader
 
 [Install]
 WantedBy=multi-user.target
