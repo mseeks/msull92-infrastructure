@@ -1,7 +1,7 @@
 [Unit]
 Description=Applications Router
-After=docker.portfolio-emitter.service docker.pandora-database-presenter.service docker.msull92-com.service docker.selfie-receiver.service docker.mood-presenter.service docker.portfolio-presenter.service docker.portfolio-dashboard.service
-Requires=docker.portfolio-emitter.service docker.pandora-database-presenter.service docker.msull92-com.service docker.selfie-receiver.service docker.mood-presenter.service docker.portfolio-presenter.service docker.portfolio-dashboard.service
+After=docker.portfolio-emitter.service docker.msull92-com.service docker.mood-presenter.service docker.portfolio-presenter.service docker.portfolio-dashboard.service
+Requires=docker.portfolio-emitter.service docker.msull92-com.service docker.mood-presenter.service docker.portfolio-presenter.service docker.portfolio-dashboard.service
 
 [Service]
 TimeoutStartSec=0

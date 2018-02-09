@@ -1,6 +1,5 @@
 long_running_services:
   - docker.applications-router.service
-  - docker.datadog-agent.service
   - docker.equity-signaler.service
   - docker.equity-signaler-redis.service
   - docker.equity-trader.service
@@ -11,13 +10,10 @@ long_running_services:
   - docker.mood-database.service
   - docker.mood-presenter.service
   - docker.msull92-com.service
-  - docker.pandora-database.service
-  - docker.pandora-database-presenter.service
   - docker.portfolio-dashboard.service
   - docker.portfolio-emitter.service
   - docker.portfolio-metrics-ingester.service
   - docker.portfolio-presenter.service
-  - docker.selfie-receiver.service
   - docker.zookeeper.service
 networks:
   - internal
