@@ -1,7 +1,7 @@
 [Unit]
 Description=Equity Signaler
-After=docker.redis.service docker.kafka.service
-Requires=docker.redis.service docker.kafka.service
+After=docker.equity-signaler-redis.service docker.kafka.service
+Requires=docker.equity-signaler-redis.service docker.kafka.service
 
 [Service]
 TimeoutStartSec=0

@@ -1,0 +1,15 @@
+[Unit]
+Description=Macd Tracker Redis
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill macd_tracker_redis
+ExecStartPre=-/usr/bin/docker rm macd_tracker_redis
+ExecStartPre=/usr/bin/docker pull redis
+ExecStart=/usr/bin/docker run --name macd_tracker_redis --network internal -m 100m --cpus=".25" -v /data/macd-tracker-redis:/data redis redis-server --appendonly yes
+
+[Install]
+WantedBy=multi-user.target

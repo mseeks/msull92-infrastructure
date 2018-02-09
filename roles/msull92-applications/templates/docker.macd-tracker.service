@@ -1,7 +1,7 @@
 [Unit]
 Description=MACD Tracker
-After=docker.kafka.service
-Requires=docker.kafka.service
+After=docker.macd-tracker-redis.service docker.kafka.service
+Requires=docker.macd-tracker-redis.service docker.kafka.service
 
 [Service]
 TimeoutStartSec=0
