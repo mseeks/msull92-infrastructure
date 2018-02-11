@@ -11,6 +11,7 @@ long_running_services:
   - docker.mood-presenter.service
   - docker.msull92-com.service
   - docker.portfolio-metrics-ingester.service
+  - docker.portfolio-stats-tracker.service
   - docker.quote-tracker.service
   - docker.zookeeper.service
 networks:

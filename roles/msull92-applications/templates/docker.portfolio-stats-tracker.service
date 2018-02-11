@@ -1,0 +1,15 @@
+[Unit]
+Description=Portfolio Stats Tracker
+After=docker.kafka.service
+Requires=docker.kafka.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill portfolio_stats_tracker
+ExecStartPre=-/usr/bin/docker rm portfolio_stats_tracker
+ExecStartPre=/usr/bin/docker pull msull92/portfolio-stats-tracker
+ExecStart=/usr/bin/docker run -m 100m --cpus=".25" --env-file /srv/portfolio-stats-tracker/.env --network internal --name portfolio_stats_tracker msull92/portfolio-stats-tracker
+
+[Install]
+WantedBy=multi-user.target
