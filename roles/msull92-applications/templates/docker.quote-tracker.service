@@ -1,0 +1,15 @@
+[Unit]
+Description=Quote Tracker
+After=docker.kafka.service
+Requires=docker.kafka.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill quote_tracker
+ExecStartPre=-/usr/bin/docker rm quote_tracker
+ExecStartPre=/usr/bin/docker pull msull92/quote-tracker
+ExecStart=/usr/bin/docker run -m 100m --cpus=".25" --env-file /srv/quote-tracker/.env --network internal --name quote_tracker msull92/quote-tracker
+
+[Install]
+WantedBy=multi-user.target
