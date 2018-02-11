@@ -10,17 +10,21 @@ digraph algorithm {
   "equity-signals"             -> "equity-trader"
   "equity-trader"              -> "Robinhood API"
   "Robinhood API"              -> "portfollio-tracker"
+  "Robinhood API"              -> "quote-tracker"
   "portfollio-tracker"         -> "portfolio-positions"
   "portfollio-tracker"         -> "portfolio-stats"
+  "quote-tracker"              -> "equity-quotes"
   "portfolio-positions"        -> "portfolio-metrics-ingester"
   "portfolio-stats"            -> "portfolio-metrics-ingester"
   "macd-stats"                 -> "portfolio-metrics-ingester"
   "equity-signals"             -> "portfolio-metrics-ingester"
+  "equity-quotes"              -> "portfolio-metrics-ingester"
   "portfolio-metrics-ingester" -> "influx"
   "influx"                     -> "grafana"
 
   "macd-stats" [shape=record label="{<f0> kafka| <f1> macd-stats}"]
   "equity-signals" [shape=record label="{<f0> kafka| <f1> equity-signals}"]
+  "equity-quotes" [shape=record label="{<f0> kafka| <f1> equity-quotes}"]
   "portfolio-positions" [shape=record label="{<f0> kafka| <f1> portfolio-positions}"]
   "portfolio-stats" [shape=record label="{<f0> kafka| <f1> portfolio-stats}"]
   "AlphaVantage API" [shape=house]
