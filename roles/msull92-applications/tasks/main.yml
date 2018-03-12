@@ -20,9 +20,22 @@
     mode: 0644
   with_items: "{{ all_services_and_timers }}"
 
+- name: Place the systemd files for long running templated services
+  template:
+    src: "{{ item['name'] }}"
+    dest: /etc/systemd/system/{{ item['name'] }}
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ long_running_templated_services }}"
+
 - name: Enable systemd services and timers
   command: systemctl enable {{ item }}
   with_items: "{{ all_services_and_timers }}"
+
+- name: Enable systemd services and timers for long running templated services
+  command: systemctl enable {{ item['range'] }}
+  with_items: "{{ long_running_templated_services }}"
 
 - name: Reload systemd
   command: systemctl daemon-reload
@@ -30,3 +43,7 @@
 - name: Restart long running services and timers
   command: systemctl restart {{ item }}
   with_items: "{{ long_running_services_and_timers }}"
+
+- name: Restart long running services and timers for long running templated services
+  command: systemctl restart {{ item['range'] }}
+  with_items: "{{ long_running_templated_services }}"

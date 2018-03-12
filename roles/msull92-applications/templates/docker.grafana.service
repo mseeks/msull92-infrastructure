@@ -1,0 +1,15 @@
+[Unit]
+Description=Grafana Dashboard
+After=docker.influx.service docker.service
+Requires=docker.influx.service docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill grafana
+ExecStartPre=-/usr/bin/docker rm grafana
+ExecStartPre=/usr/bin/docker pull grafana/grafana
+ExecStart=/usr/bin/docker run -m 100m --cpus=".5" --env-file /srv/grafana/.env --network internal -v /data/grafana:/var/lib/grafana --name grafana grafana/grafana
+
+[Install]
+WantedBy=multi-user.target

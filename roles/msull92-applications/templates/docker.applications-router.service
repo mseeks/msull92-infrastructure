@@ -1,7 +1,7 @@
 [Unit]
 Description=Applications Router
-After=docker.msull92-com.service docker.mood-presenter.service
-Requires=docker.msull92-com.service docker.mood-presenter.service
+After=docker.msull92-com.service docker.mood-presenter.service docker.grafana.service
+Requires=docker.msull92-com.service docker.mood-presenter.service docker.grafana.service
 
 [Service]
 TimeoutStartSec=0
