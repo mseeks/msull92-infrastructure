@@ -9,7 +9,7 @@ Restart=always
 ExecStartPre=-/usr/bin/docker kill influx
 ExecStartPre=-/usr/bin/docker rm influx
 ExecStartPre=/usr/bin/docker pull influxdb:1.4
-ExecStart=/usr/bin/docker run -m 500m --cpus=".5" --env-file /srv/influx/.env -v /data/influx:/var/lib/influxdb --network internal --name influx -p 8086:8086 influxdb
+ExecStart=/usr/bin/docker run -m 500m --cpus=".5" --env-file /srv/influx/.env -v /data/influx:/var/lib/influxdb --network internal --name influx influxdb
 
 [Install]
 WantedBy=multi-user.target
