@@ -1,7 +1,8 @@
 digraph algorithm {
   node[shape=record]
 
-  "AlphaVantage API"           -> "macd-tracker"
+  "Robinhood API"              -> "macd-tracker"
+  "equity-quotes"              -> "macd-tracker"
   "macd-tracker"               -> "macd-stats"
   "macd-tracker"               -> "macd-tracker-redis"
   "macd-stats"                 -> "equity-signaler"
@@ -28,7 +29,6 @@ digraph algorithm {
   "equity-quotes" [shape=record label="{<f0> kafka| <f1> equity-quotes}"]
   "portfolio-positions" [shape=record label="{<f0> kafka| <f1> portfolio-positions}"]
   "portfolio-stats" [shape=record label="{<f0> kafka| <f1> portfolio-stats}"]
-  "AlphaVantage API" [shape=house]
   "Robinhood API" [shape=house]
   "macd-tracker-redis" [shape=ellipse]
   "equity-signaler-redis" [shape=ellipse]
