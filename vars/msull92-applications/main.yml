@@ -1,6 +1,5 @@
 long_running_services:
   - docker.applications-router.service
-  - docker.equity-signaler.service
   - docker.equity-signaler-redis.service
   - docker.equity-trader.service
   - docker.grafana.service
@@ -15,6 +14,8 @@ long_running_services:
   - docker.quote-tracker.service
   - docker.zookeeper.service
 long_running_templated_services:
+  - name: docker.equity-signaler@.service
+    range: docker.equity-signaler@{1..2}.service
   - name: docker.portfolio-metrics-ingester@.service
     range: docker.portfolio-metrics-ingester@{1..3}.service
 networks:
