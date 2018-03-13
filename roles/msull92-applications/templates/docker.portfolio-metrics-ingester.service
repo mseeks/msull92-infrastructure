@@ -1,15 +1,15 @@
 [Unit]
-Description=Portfolio Metrics Ingester #%i
+Description=Portfolio Metrics Ingester
 After=docker.kafka.service docker.influx.service docker.service
 Requires=docker.kafka.service docker.influx.service docker.service
 
 [Service]
 TimeoutStartSec=0
 Restart=always
-ExecStartPre=-/usr/bin/docker kill portfolio_metrics_ingester_%i
-ExecStartPre=-/usr/bin/docker rm portfolio_metrics_ingester_%i
+ExecStartPre=-/usr/bin/docker kill portfolio_metrics_ingester
+ExecStartPre=-/usr/bin/docker rm portfolio_metrics_ingester
 ExecStartPre=/usr/bin/docker pull msull92/portfolio-metrics-ingester
-ExecStart=/usr/bin/docker run -m 100m --cpus=".5" --network internal --env-file /srv/portfolio-metrics-ingester/.env --name portfolio_metrics_ingester_%i msull92/portfolio-metrics-ingester
+ExecStart=/usr/bin/docker run -m 100m --cpus=".5" --network internal --env-file /srv/portfolio-metrics-ingester/.env --name portfolio_metrics_ingester msull92/portfolio-metrics-ingester
 
 [Install]
 WantedBy=multi-user.target
