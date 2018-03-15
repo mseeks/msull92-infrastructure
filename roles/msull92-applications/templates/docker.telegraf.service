@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegraf
+After=docker.influx.service docker.zookeeper.service docker.macd-tracker-redis.service docker.equity-signaler-redis.service docker.service
+Requires=docker.influx.service docker.zookeeper.service docker.macd-tracker-redis.service docker.equity-signaler-redis.service docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill telegraf
+ExecStartPre=-/usr/bin/docker rm telegraf
+ExecStartPre=/usr/bin/docker pull telegraf
+ExecStart=/usr/bin/docker run --network internal --name telegraf -v /var/run/docker.sock:/var/run/docker.sock -v /srv/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro telegraf
+
+[Install]
+WantedBy=multi-user.target

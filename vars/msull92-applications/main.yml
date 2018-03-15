@@ -14,6 +14,7 @@ long_running_services:
   - docker.portfolio-metrics-ingester.service
   - docker.portfolio-stats-tracker.service
   - docker.quote-tracker.service
+  - docker.telegraf.service
   - docker.zookeeper.service
 networks:
   - internal
