@@ -1,0 +1,15 @@
+[Unit]
+Description=MACD Tracker #10
+After=docker.macd-tracker-redis.service docker.kafka.service
+Requires=docker.macd-tracker-redis.service docker.kafka.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill macd_tracker10
+ExecStartPre=-/usr/bin/docker rm macd_tracker10
+ExecStartPre=/usr/bin/docker pull msull92/macd-tracker
+ExecStart=/usr/bin/docker run -m 500m --cpus=".5" --env-file /srv/macd-tracker/.env --network internal --name macd_tracker10 msull92/macd-tracker
+
+[Install]
+WantedBy=multi-user.target
